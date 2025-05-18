@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Travel Agency - Home & About</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap');
+
+  body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f9ff;
+    color: #234567;
+  }
+
+  header {
+    background: linear-gradient(135deg, #0277bd 0%, #00b0ff 100%);
+    color: white;
+    padding: 3rem 1rem 4rem;
+    text-align: center;
+  }
+
+  header h1 {
+    font-weight: 700;
+    font-size: 3rem;
+    margin: 0 0 0.5rem;
+  }
+
+  header p {
+    font-weight: 300;
+    font-size: 1.3rem;
+    margin: 0;
+  }
+
+  nav {
+    margin: 2rem auto;
+    max-width: 720px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .nav-btn {
+    background: white;
+    color: #0277bd;
+    border: 2px solid #0277bd;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 0.8rem 2.4rem;
+    margin: 0 0.8rem;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  .nav-btn:hover {
+    background-color: #0277bd;
+    color: white;
+  }
+
+  .nav-btn.active {
+    background-color: #0277bd;
+    color: white;
+  }
+
+  main {
+    max-width: 900px;
+    margin: 0 auto 4rem;
+    padding: 0 1rem;
+  }
+
+  /* Sections */
+  section {
+    display: none;
+  }
+  section.active {
+    display: block;
+    animation: fadeIn 0.5s ease forwards;
+  }
+
+  @keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+  }
+
+  /* Home Content */
+  .home-intro {
+    font-size: 1.15rem;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+    color: #055a8c;
+  }
+
+  .featured-tours {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+    gap: 1.8rem;
+  }
+
+  .tour-card {
+    background: white;
+    border-radius: 14px;
+    box-shadow: 0 8px 25px rgb(0 0 0 / 0.12);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .tour-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 14px 38px rgb(0 0 0 / 0.18);
+  }
+
+  .tour-img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-bottom: 3px solid #0277bd;
+  }
+
+  .tour-info {
+    padding: 1rem 1.3rem 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .tour-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+    color: #004a75;
+  }
+  .tour-desc {
+    flex-grow: 1;
+    color: #3B587C;
+    font-size: 1rem;
+    line-height: 1.4;
+    margin-bottom: 1rem;
+  }
+  .tour-price {
+    font-weight: 600;
+    font-size: 1.05rem;
+    color: #01649e;
+  }
+
+  /* About Content */
+  .about-section p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 1.2rem;
+    color: #014a75;
+  }
+
+  .team {
+    margin-top: 1.8rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+
+  .team-member {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgb(0 0 0 / 0.1);
+    flex: 1 1 200px;
+    max-width: 260px;
+    padding: 1.2rem;
+    text-align: center;
+  }
+
+  .team-member img {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin-bottom: 1rem;
+  }
+
+  .member-name {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #03527a;
+    margin-bottom: 0.4rem;
+  }
+
+  .member-role {
+    font-size: 0.9rem;
+    color: #567a92;
+  }
+
+  @media (max-width: 600px) {
+    header h1 {
+      font-size: 2rem;
+    }
+    nav {
+      flex-direction: column;
+      max-width: 280px;
+      margin: 2rem auto;
+    }
+    .nav-btn {
+      margin: 8px 0;
+      width: 100%;
+    }
+    .featured-tours {
+      grid-template-columns: 1fr;
+    }
+    .team {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Explore Beyond Travels</h1>
+  <p>Your Gateway to Unforgettable Journeys</p>
+</header>
+<main>
+  <section id="home-section" class="active" role="tabpanel" aria-labelledby="tab-home">
+    <div class="home-intro">
+      <p>Welcome to Explore Beyond Travels! We specialize in curating personalized, extraordinary travel experiences worldwide. Discover new destinations with expertly crafted tours designed just for you.</p>
+    </div>
+    <div class="featured-tours" aria-label="Featured Tour Packages">
+      <article class="tour-card" tabindex="0">
+        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=60" alt="Beach view Bali" class="tour-img" />
+        <div class="tour-info">
+          <h3 class="tour-title">Discover Bali</h3>
+          <p class="tour-desc">7-day tour exploring stunning beaches, vibrant culture, and scenic rice terraces of Bali.</p>
+          
+        </div>
+      </article>
+      <article class="tour-card" tabindex="0">
+        <img src="https://s-media-cache-ak0.pinimg.com/originals/e9/02/dc/e902dc9d1e52430f8a9c62d4d598c003.jpg" alt="Eiffel Tower Paris" class="tour-img" />
+        <div class="tour-info">
+          <h3 class="tour-title">Romantic Paris</h3>
+          <p class="tour-desc">5-day romantic getaway including Eiffel Tower visits, Seine cruise and exquisite cuisine.</p>
+          
+        </div>
+      </article>
+      <article class="tour-card" tabindex="0">
+        <img src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&w=800&q=60" alt="New York city skyline" class="tour-img" />
+        <div class="tour-info">
+          <h3 class="tour-title">New York Explorer</h3>
+          <p class="tour-desc">6-day city tour including Times Square, museums, Broadway shows and iconic landmarks.</p>
+          
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="about-section" role="tabpanel" aria-labelledby="tab-about" tabindex="0" aria-hidden="true">
+    <div class="about-section">
+      <p>Explore Beyond Travels has been providing exceptional travel experiences for over a decade. We are passionate about making your dream holidays come true with customized tours, excellent customer service, and unbeatable value.</p>
+      <p>Our mission is to inspire and enable people to explore the world, create unforgettable memories and expand their horizons.</p>
+      <h3>Meet Our Team</h3>
+      <div class="team" aria-label="Meet the Travel Agency Team">
+        <div class="team-member" tabindex="0">
+          <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Sophia Carter, Founder"/>
+          <div class="member-name">Sophia Carter</div>
+          <div class="member-role">Founder & CEO</div>
+        </div>
+        <div class="team-member" tabindex="0">
+          <img src="https://randomuser.me/api/portraits/men/34.jpg" alt="Liam Johnson, Head of Operations"/>
+          <div class="member-name">Liam Johnson</div>
+          <div class="member-role">Head of Operations</div>
+        </div>
+        <div class="team-member" tabindex="0">
+          <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Emma Wilson, Lead Travel Planner"/>
+          <div class="member-name">Emma Wilson</div>
+          <div class="member-role">Lead Travel Planner</div>
+        </div>
+      </div>
+    </div>
+     <!-- Back to Home Button -->
+    <a href="home1.html" class="go-back-button">Go Back to Home</a>
+  </section>
+</main>
+ 
+<script>
+  const tabs = document.querySelectorAll('nav button.nav-btn');
+  const sections = document.querySelectorAll('main > section');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      // Deactivate all tabs
+      tabs.forEach(t => {
+        t.classList.remove('active');
+        t.setAttribute('aria-selected', 'false');
+        t.setAttribute('tabindex', '-1');
+      });
+      // Hide all sections and update aria-hidden
+      sections.forEach(sec => {
+        sec.classList.remove('active');
+        sec.setAttribute('aria-hidden', 'true');
+      });
+
+      // Activate clicked tab
+      tab.classList.add('active');
+      tab.setAttribute('aria-selected', 'true');
+      tab.setAttribute('tabindex', '0');
+
+      // Show linked section
+      const sectionId = tab.getAttribute('aria-controls');
+      const section = document.getElementById(sectionId);
+      section.classList.add('active');
+      section.setAttribute('aria-hidden', 'false');
+      section.focus();
+    });
+  });
+</script>
+
+</body>
+</html>

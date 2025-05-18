@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Tour</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Remixicon & Google Fonts -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f2f6fc;
+      color: #333;
+    }
+
+    nav {
+      background-color: #007bff;
+      padding: 12px 30px;
+      display: flex;
+      align-items: center;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin-right: 25px;
+      font-weight: 600;
+      transition: 0.3s ease;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+      color: #cce5ff;
+    }
+
+    .section__container {
+      padding: 40px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section__header {
+      font-size: 36px;
+      text-align: center;
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+
+    .section__description {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 18px;
+      color: #555;
+    }
+
+    .journey__grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .journey__card {
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+      width: 300px;
+      padding: 20px;
+      transition: transform 0.3s;
+    }
+
+    .journey__card:hover {
+      transform: translateY(-5px);
+    }
+
+    .journey__card h4 {
+      font-size: 20px;
+      margin-top: 10px;
+    }
+
+    .showcase__container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    .destination-card {
+      background-color: white;
+      border-radius: 10px;
+      width: 300px;
+      text-align: center;
+      padding: 20px;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+      transition: 0.3s ease;
+    }
+
+    .destination-card:hover {
+      transform: translateY(-6px);
+    }
+
+    .destination-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .destination-card h3 {
+      font-size: 22px;
+      margin-top: 15px;
+    }
+
+    .destination-card p {
+      font-size: 15px;
+      color: #666;
+      margin: 10px 0;
+    }
+
+    .price {
+      font-size: 18px;
+      font-weight: bold;
+      color: #e84118;
+      margin: 10px 0;
+    }
+
+    .btn {
+      background-color: #ff5733;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .btn:hover {
+      background-color: #ff3b00;
+    }
+
+    @media (max-width: 768px) {
+      .destination-card {
+        width: 100%;
+      }
+
+      .showcase__container {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ✅ Navigation Bar -->
+  <nav>
+    <a href="home.html">Home</a>
+    <a href="about.html">About Us</a>
+    <a href="tour.html">Tour</a>
+    <a href="#destination">Packages</a>
+  </nav>
+
+  <!-- ✅ Tour Highlights Section -->
+  <section class="section__container journey__container" id="tour">
+    <h2 class="section__header">Journey To The Sky Made Simple!</h2>
+    <p class="section__description">Effortless Planning for Your Next Adventure</p>
+    <div class="journey__grid">
+      <div class="journey__card">
+        <i class="ri-bookmark-3-line" style="font-size: 28px;"></i>
+        <h4>Seamless Booking Process</h4>
+        <p>From flights and stays to activities, everything is just a click away.</p>
+      </div>
+      <div class="journey__card">
+        <i class="ri-landscape-fill" style="font-size: 28px;"></i>
+        <h4>Tailored Itineraries</h4>
+        <p>Personalized travel experiences designed just for you.</p>
+      </div>
+      <div class="journey__card">
+        <i class="ri-map-2-line" style="font-size: 28px;"></i>
+        <h4>Expert Local Insights</h4>
+        <p>Discover hidden gems and local secrets from the pros.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ✅ Destination Packages Section -->
+  <section class="section__container showcase__container" id="destination">
+    <h2 class="section__header">Explore Our Top Destinations</h2>
+    <p class="section__description">Choose your next dream destination and book your trip!</p>
+
+    <div class="showcase__container">
+      <!-- Japan -->
+      <div class="destination-card">
+        <img src="assets/japan.jpg" alt="Japan" />
+        <h3>Japan Adventure</h3>
+        <p>Explore serene temples, cherry blossoms, and tech-savvy cities.</p>
+        <div class="price">$1,500</div>
+        <a href="trip.html?destination=Japan&price=1500">
+          <button class="btn">Book This Trip <i class="ri-arrow-right-line"></i></button>
+        </a>
+      </div>
+
+      <!-- Paris -->
+      <div class="destination-card">
+        <img src="assets/paris.jpg" alt="Paris" />
+        <h3>Paris Getaway</h3>
+        <p>Experience romance, art, and lights in the French capital.</p>
+        <div class="price">$2,000</div>
+        <a href="trip.html?destination=Paris&price=2000">
+          <button class="btn">Book This Trip <i class="ri-arrow-right-line"></i></button>
+        </a>
+      </div>
+
+      <!-- USA -->
+      <div class="destination-card">
+        <img src="assets/usa.jpg" alt="USA" />
+        <h3>USA Tour</h3>
+        <p>From New York to California — explore America your way.</p>
+        <div class="price">$2,500</div>
+        <a href="trip.html?destination=USA&price=2500">
+          <button class="btn">Book This Trip <i class="ri-arrow-right-line"></i></button>
+        </a>
+      </div>
+
+      <!-- China -->
+      <div class="destination-card">
+        <img src="assets/china.jpg" alt="China" />
+        <h3>China Exploration</h3>
+        <p>Walk the Great Wall and experience ancient traditions.</p>
+        <div class="price">$1,800</div>
+        <a href="trip.html?destination=China&price=1800">
+          <button class="btn">Book This Trip <i class="ri-arrow-right-line"></i></button>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</body>
+
+</html>

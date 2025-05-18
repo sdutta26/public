@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Travel Agency - Car Fleet</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+  body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: #f0f4f8;
+    color: #333;
+  }
+  header {
+    background: #2c3e50;
+    color: white;
+    padding: 2rem 1rem;
+    text-align: center;
+    box-shadow: 0 4px 8px rgb(0 0 0 / 0.1);
+  }
+  header h1 {
+    margin: 0;
+    font-weight: 600;
+    font-size: 2.5rem;
+    letter-spacing: 1px;
+  }
+  .container {
+    max-width: 1200px;
+    margin: 2rem auto 4rem;
+    padding: 0 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+  }
+  .car-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgb(0 0 0 / 0.08);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .car-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 25px rgb(0 0 0 / 0.15);
+  }
+  .car-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+  }
+  .car-content {
+    padding: 1rem 1.2rem 1.5rem;
+    flex-grow: 1;
+  }
+  .car-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin: 0 0 0.4rem 0;
+    color: #34495e;
+  }
+  .facilities {
+    list-style-type: none;
+    padding-left: 0;
+    margin-top: 0.5rem;
+  }
+  .facilities li {
+    margin-bottom: 0.4rem;
+    padding-left: 1.3em;
+    position: relative;
+    color: #555;
+  }
+  .facilities li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #27ae60;
+    font-weight: bold;
+  }
+  @media (max-width: 480px) {
+    header h1 {
+      font-size: 1.8rem;
+    }
+    .car-image {
+      height: 140px;
+    }
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>Explore Our Car Fleet</h1>
+  <p>Choose the perfect ride for your journey</p>
+</header>
+
+<main class="container">
+  <section class="car-card">
+    <img class="car-image" src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80" alt="Sedan Car" />
+    <div class="car-content">
+      <h2 class="car-title">Comfort Sedan</h2>
+      <ul class="facilities">
+        <li>Air Conditioning</li>
+        <li>GPS Navigation</li>
+        <li>Bluetooth Audio</li>
+        <li>4 Passengers</li>
+        <li>Spacious Trunk</li>
+      </ul>
+    </div>
+    <a href="car.html">BOOK NOW</a>
+  </section>
+
+  <section class="car-card">
+    <img class="car-image" src="https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&w=800&q=80" alt="SUV Car" />
+    <div class="car-content">
+      <h2 class="car-title">Spacious SUV</h2>
+      <ul class="facilities">
+        <li>All-Wheel Drive</li>
+        <li>Advanced Safety Features</li>
+        <li>7 Passengers</li>
+        <li>Ample Cargo Space</li>
+        <li>Rearview Camera</li>
+      </ul>
+    </div>
+    <a href="car.html">BOOK NOW</a>
+  </section>
+
+  <section class="car-card">
+    <img class="car-image" src="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=800&q=80" alt="Convertible Car" />
+    <div class="car-content">
+      <h2 class="car-title">Stylish Convertible</h2>
+      <ul class="facilities">
+        <li>Open Roof Experience</li>
+        <li>Premium Sound System</li>
+        <li>2 Passengers</li>
+        <li>Leather Seats</li>
+        <li>Sporty Design</li>
+      </ul>
+    </div>
+    <a href="car.html">BOOK NOW</a>
+  </section>
+
+  <section class="car-card">
+    <img class="car-image" src="https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?auto=format&fit=crop&w=800&q=80" alt="Luxury Sedan" />
+    <div class="car-content">
+      <h2 class="car-title">Luxury Sedan</h2>
+      <ul class="facilities">
+        <li>Premium Leather Interior</li>
+        <li>Climate Control</li>
+        <li>WiFi Hotspot</li>
+        <li>Quiet Cabin</li>
+        <li>5 Passengers</li>
+      </ul>
+    </div>
+    <a href="car.html">BOOK NOW</a>
+  </section>
+
+  <section class="car-card">
+    <img class="car-image" src="https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=800&q=80" alt="Minivan" />
+    <div class="car-content">
+      <h2 class="car-title">Family Minivan</h2>
+      <ul class="facilities">
+        <li>Seating for 8</li>
+        <li>Rear Entertainment System</li>
+        <li>Sliding Doors</li>
+        <li>Multiple USB Ports</li>
+        <li>Comfortable Ride</li>
+      </ul>
+    </div>
+    <a href="car.html">BOOK NOW</a>
+  </section>
+</main>
+</body>
+</html>

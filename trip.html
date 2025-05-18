@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Your Trip</title>
+
+    <!-- Remixicon & Google Fonts -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f4f8fb;
+            color: #333;
+        }
+
+        nav {
+            background-color: #007bff;
+            padding: 12px 30px;
+            display: flex;
+            align-items: center;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin-right: 25px;
+            font-weight: 600;
+            transition: 0.3s ease;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+            color: #dff0ff;
+        }
+
+        .section__container {
+            padding: 50px 20px;
+            max-width: 700px;
+            margin: 40px auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+        }
+
+        .section__header {
+            font-size: 32px;
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-size: 15px;
+            font-weight: 500;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="number"],
+        textarea {
+            width: 100%;
+            padding: 12px;
+            font-size: 15px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            transition: border-color 0.3s;
+        }
+
+        input:focus,
+        textarea:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        .confirm-checkbox {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .confirm-checkbox input {
+            margin-right: 10px;
+        }
+
+        .btn {
+            background-color: #ff5733;
+            color: white;
+            padding: 14px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #ff3b00;
+        }
+
+        @media (max-width: 600px) {
+            .section__container {
+                margin: 20px;
+                padding: 30px 15px;
+            }
+
+            .section__header {
+                font-size: 26px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ✅ Navigation Bar -->
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="tour.html">Tour</a>
+        <a href="package.html">Packages</a>
+    </nav>
+
+    <!-- ✅ Booking Form Section -->
+    <section class="section__container">
+        <h2 class="section__header">Book Your Trip</h2>
+        <form action="submit-booking.php" method="post" onsubmit="return validateForm()">
+            <!-- Hidden Inputs -->
+            <input type="hidden" name="destination" id="destination">
+            <input type="hidden" name="price" id="price">
+
+            <!-- User Info -->
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="address">Address</label>
+                <textarea id="address" name="address" rows="4" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="payment">Payment Amount</label>
+                <input type="number" id="payment" name="payment" readonly required>
+            </div>
+
+            <!-- Confirmation -->
+            <div class="confirm-checkbox">
+                <input type="checkbox" id="confirm" required>
+                <label for="confirm">I confirm that the above information is correct.</label>
+            </div>
+
+            <button type="submit" class="btn">Submit Booking</button>
+        </form>
+    </section>
+
+    <!-- ✅ JS: Auto-fill price & destination -->
+    <script>
+        // Get parameters from URL (destination & price)
+        const urlParams = new URLSearchParams(window.location.search);
+        const destination = urlParams.get('destination');
+        const price = urlParams.get('price');
+
+        // Set values for hidden fields
+        document.getElementById('destination').value = destination;
+        document.getElementById('price').value = price;
+        document.getElementById('payment').value = price;
+
+        // Validate Form before submission
+        function validateForm() {
+            if (!document.getElementById('confirm').checked) {
+                alert("Please confirm that your information is correct before submitting.");
+                return false;
+            }
+            return true;
+        }
+    </script>
+</body>
+
+</html>
+<?php
+// Database connection parameters
+$servername = "localhost"; // Your database host (usually localhost)
+$username = "root"; // Your MySQL username (default is 'root' for XAMPP)
+$password = ""; // Your MySQL password (leave empty for XAMPP default)
+$dbname = "travel_booking"; // Your database name
+
+// Create a connection to the database
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check if the connection is successful
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Retrieve form data
+$name = $_POST['name'];
+$phone = $_POST['phone'];
+$email = $_POST['email'];
+$address = $_POST['address'];
+$destination = $_POST['destination'];
+$price = $_POST['price'];
+$payment = $_POST['payment'];
+
+// Prepare an SQL query to insert data into the bookings table using prepared statements
+$stmt = $conn->prepare("INSERT INTO bookings (name, phone, email, address, destination, price, payment) VALUES (?, ?, ?, ?, ?, ?, ?)");
+$stmt->bind_param("sssssss", $name, $phone, $email, $address, $destination, $price, $payment); // "sssssss" means seven string parameters
+
+// Execute the query and check if the insertion is successful
+if ($stmt->execute()) {
+    echo "Booking successful!";
+} else {
+    echo "Error: " . $stmt->error;
+}
+
+// Close the prepared statement and the database connection
+$stmt->close();
+$conn->close();
+?>

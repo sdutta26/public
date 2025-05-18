@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Car Booking - Travel Agency</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+      color: #f5f5f5;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 30px;
+      border-radius: 12px;
+      max-width: 480px;
+      width: 100%;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(8px);
+    }
+
+    h1 {
+      text-align: center;
+      font-weight: 600;
+      margin-bottom: 25px;
+      letter-spacing: 1.2px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    label {
+      font-weight: 600;
+      margin-bottom: 6px;
+      display: block;
+      letter-spacing: 0.5px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="datetime-local"],
+    select {
+      width: 100%;
+      padding: 10px 14px;
+      border-radius: 8px;
+      border: none;
+      font-size: 1rem;
+      font-family: inherit;
+      outline-offset: 2px;
+      transition: outline-color 0.3s ease;
+      color: #222;
+    }
+
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    input[type="datetime-local"]:focus,
+    select:focus {
+      outline: 3px solid #00c6ff;
+      background: #e3f6fd;
+    }
+
+    button {
+      padding: 14px;
+      background: #00c6ff;
+      border: none;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: #003049;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      letter-spacing: 1px;
+      margin-top: 12px;
+      box-shadow: 0 5px 15px rgba(0,198,255,0.5);
+    }
+
+    button:hover {
+      background: #0288d1;
+      color: #e0f7fa;
+      box-shadow: 0 7px 20px rgba(2,136,209,0.7);
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .car-types {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .car-type-option {
+      flex: 1 1 45%;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 8px;
+      padding: 10px;
+      cursor: pointer;
+      text-align: center;
+      border: 2px solid transparent;
+      transition: border-color 0.3s ease, background 0.3s ease;
+      user-select: none;
+    }
+
+    .car-type-option input[type="radio"] {
+      display: none;
+    }
+
+    .car-type-option label {
+      cursor: pointer;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .car-type-option:hover, 
+    .car-type-option input[type="radio"]:checked + label {
+      border-color: #00c6ff;
+      background: rgba(0, 198, 255, 0.2);
+      color: #00c6ff;
+    }
+
+    .error {
+      color: #ff6b6b;
+      font-size: 0.875rem;
+      margin-top: 4px;
+      font-weight: 600;
+    }
+
+    @media (max-width: 500px) {
+      .car-type-option {
+        flex: 1 1 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container" role="main">
+    <h1>Car Booking</h1>
+    <form id="bookingForm" novalidate>
+      <div class="form-group">
+        <label for="pickupLocation">Pick-Up Location</label>
+        <input type="text" id="pickupLocation" name="pickupLocation" placeholder="Enter pick-up location" required />
+        <div class="error" id="pickupLocationError"></div>
+      </div>
+
+      <div class="form-group">
+        <label for="dropoffLocation">Drop-Off Location</label>
+        <input type="text" id="dropoffLocation" name="dropoffLocation" placeholder="Enter drop-off location" required />
+        <div class="error" id="dropoffLocationError"></div>
+      </div>
+
+      <div class="form-group">
+        <label for="pickupDateTime">Pick-Up Date & Time</label>
+        <input type="datetime-local" id="pickupDateTime" name="pickupDateTime" required />
+        <div class="error" id="pickupDateTimeError"></div>
+      </div>
+
+      <div class="form-group">
+        <label for="dropoffDateTime">Drop-Off Date & Time</label>
+        <input type="datetime-local" id="dropoffDateTime" name="dropoffDateTime" required />
+        <div class="error" id="dropoffDateTimeError"></div>
+      </div>
+
+      <div class="form-group">
+        <label>Car Type</label>
+        <div class="car-types" role="radiogroup" aria-labelledby="car-type-label">
+          <div class="car-type-option">
+            <input type="radio" id="economy" name="carType" value="Economy" required />
+            <label for="economy">Economy</label>
+          </div>
+          <div class="car-type-option">
+            <input type="radio" id="standard" name="carType" value="Standard" />
+            <label for="standard">Standard</label>
+          </div>
+          <div class="car-type-option">
+            <input type="radio" id="luxury" name="carType" value="Luxury" />
+            <label for="luxury">Luxury</label>
+          </div>
+          <div class="car-type-option">
+            <input type="radio" id="suv" name="carType" value="SUV" />
+            <label for="suv">SUV</label>
+          </div>
+        </div>
+        <div class="error" id="carTypeError"></div>
+      </div>
+
+      <div class="form-group">
+        <label for="fullName">Full Name</label>
+        <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required />
+        <div class="error" id="fullNameError"></div>
+      </div>
+
+      <div class="form-group">
+        <label for="emailAddress">Email Address</label>
+        <input type="email" id="emailAddress" name="emailAddress" placeholder="Enter your email" required />
+        <div class="error" id="emailAddressError"></div>
+      </div>
+
+      <div class="form-group">
+        <label for="phoneNumber">Phone Number</label>
+        <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Enter your phone number" required pattern="\\+?\\d{7,15}" />
+        <div class="error" id="phoneNumberError"></div>
+      </div>
+
+      <button type="submit" aria-label="Submit Car Booking Form">Book Now</button>
+      <a href="car2.html">
+        <button type="button">BACK </button></a>
+    </form>
+  </div>
+
+
+
+  <script>
+    const form = document.getElementById('bookingForm');
+
+    function showError(inputId, message) {
+      const errorDiv = document.getElementById(inputId + 'Error');
+      errorDiv.textContent = message;
+    }
+
+    function clearErrors() {
+      const errors = document.querySelectorAll('.error');
+      errors.forEach(e => e.textContent = '');
+    }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      clearErrors();
+
+      let valid = true;
+
+      const pickupLocation = form.pickupLocation.value.trim();
+      if (!pickupLocation) {
+        showError('pickupLocation', 'Pick-up location is required.');
+        valid = false;
+      }
+
+      const dropoffLocation = form.dropoffLocation.value.trim();
+      if (!dropoffLocation) {
+        showError('dropoffLocation', 'Drop-off location is required.');
+        valid = false;
+      }
+
+      const pickupDateTime = form.pickupDateTime.value;
+      if (!pickupDateTime) {
+        showError('pickupDateTime', 'Pick-up date & time is required.');
+        valid = false;
+      }
+
+      const dropoffDateTime = form.dropoffDateTime.value;
+      if (!dropoffDateTime) {
+        showError('dropoffDateTime', 'Drop-off date & time is required.');
+        valid = false;
+      }
+
+      if (pickupDateTime && dropoffDateTime) {
+        const pickUpDateObj = new Date(pickupDateTime);
+        const dropOffDateObj = new Date(dropoffDateTime);
+        if (pickUpDateObj >= dropOffDateObj) {
+          showError('dropoffDateTime', 'Drop-off date & time must be after pick-up.');
+          valid = false;
+        }
+      }
+
+      const carType = form.carType.value;
+      if (!carType) {
+        showError('carType', 'Please select a car type.');
+        valid = false;
+      }
+
+      const fullName = form.fullName.value.trim();
+      if (!fullName) {
+        showError('fullName', 'Full name is required.');
+        valid = false;
+      }
+
+      const emailAddress = form.emailAddress.value.trim();
+      if (!emailAddress) {
+        showError('emailAddress', 'Email address is required.');
+        valid = false;
+      } else {
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(emailAddress)) {
+          showError('emailAddress', 'Please enter a valid email.');
+          valid = false;
+        }
+      }
+
+      const phoneNumber = form.phoneNumber.value.trim();
+      if (!phoneNumber) {
+        showError('phoneNumber', 'Phone number is required.');
+        valid = false;
+      } else {
+        const phonePattern = /^\+?\d{7,15}$/;
+        if (!phonePattern.test(phoneNumber)) {
+          showError('phoneNumber', 'Enter a valid phone number (7-15 digits, may start with +).');
+          valid = false;
+        }
+      }
+
+      if (valid) {
+        alert('Thank you, ' + fullName + '! Your car booking has been submitted.');
+        form.reset();
+      }
+    });
+  </script>
+  
+</body>
+</html>

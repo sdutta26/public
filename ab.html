@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us - Travel Website</title>
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .section__container {
+      padding: 40px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section__header {
+      font-size: 32px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .section__description {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 18px;
+      color: #555;
+    }
+
+    .destination__grid {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .destination__card {
+      background-color: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      width: 300px;
+    }
+
+    .destination__card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .destination__card__details {
+      padding: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .destination__rating span {
+      color: gold;
+    }
+
+    .about__container {
+      background-color: #f0f0f0;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .rating__container {
+      margin: 20px 0;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .rating__item {
+      margin: 0 10px;
+      font-size: 18px;
+      color: #333;
+    }
+
+    .voting__form {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .voting__form select {
+      padding: 10px;
+      font-size: 16px;
+      margin-right: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .voting__form button {
+      padding: 10px 20px;
+      background-color: #ff5733;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      border-radius: 5px;
+    }
+
+    .voting__form button:hover {
+      background-color: #ff3b00;
+    }
+
+    .user-vote {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 20px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .comment__section {
+      margin-top: 40px;
+      padding: 20px;
+      background-color: #fafafa;
+      border-radius: 8px;
+    }
+
+    .comment__form textarea {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      margin-bottom: 10px;
+      height: 100px;
+    }
+
+    .comment__form button {
+      padding: 10px 20px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      border-radius: 5px;
+    }
+
+    .comment__form button:hover {
+      background-color: #218838;
+    }
+
+    .user-comment {
+      margin-top: 20px;
+      padding: 15px;
+      background-color: white;
+      border-radius: 5px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      margin-bottom: 10px;
+    }
+
+    .go-back-button {
+      display: block;
+      margin: 30px auto;
+      padding: 12px 24px;
+      background-color: #007bff;
+      color: white;
+      font-size: 18px;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 5px;
+      width: 200px;
+    }
+
+    .go-back-button:hover {
+      background-color: #0056b3;
+    }
+
+    .user-experience {
+      margin-top: 40px;
+    }
+
+    .experience-item {
+      background-color: #f9f9f9;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .experience-item p {
+      font-size: 16px;
+      color: #555;
+    }
+
+    .experience-item .user-name {
+      font-weight: bold;
+      color: #333;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Popular Destination Section -->
+  <section class="section__container destination__container" id="popular-destination">
+    <h2 class="section__header">Popular Destinations</h2>
+    <p class="section__description">Discover the Most Loved Destinations Around the Globe</p>
+    <div class="destination__grid">
+      <div class="destination__card">
+        <img src="https://th.bing.com/th/id/OIP.-TzFBbHeO7cr_QR7Z466wQHaE8?rs=1&pid=ImgDetMain" />
+        <div class="destination__card__details">
+          <div>
+            <h4>Tradition and Futurism</h4>
+            <p>New York City, USA</p>
+          </div>
+          <div class="destination__rating">
+            <span><i class="ri-star-fill"></i></span> 4.7
+          </div>
+        </div>
+      </div>
+      <div class="destination__card">
+        <img src="https://lonelyplanetimages.imgix.net/mastheads/GettyImages-546212251_medium.jpg" alt="Paris Eiffel Tower" />
+        <div class="destination__card__details">
+          <div>
+            <h4>The City of Lights</h4>
+            <p>Paris, France</p>
+          </div>
+          <div class="destination__rating">
+            <span><i class="ri-star-fill"></i></span> 4.5
+          </div>
+        </div>
+      </div>
+      <div class="destination__card">
+        <img src="https://a.cdn-hotels.com/gdcs/production109/d34/0e2d7854-11df-4ca9-8018-211e8ae372e5.jpg" alt="Bali Beach" />
+        <div class="destination__card__details">
+          <div>
+            <h4>Island of the Gods</h4>
+            <p>Bali, Indonesia</p>
+          </div>
+          <div class="destination__rating">
+            <span><i class="ri-star-fill"></i></span> 4.8
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Us Section -->
+  <section class="section__container about__container" id="about">
+    <h2 class="section__header">About Us</h2>
+    <p>We are a passionate travel company dedicated to making your dream vacations come true. From personalized itineraries to expert recommendations, we’re here to guide you on every step of your journey.</p>
+
+    <!-- Rating Section -->
+    <h3>Customer Ratings</h3>
+    <div class="rating__container">
+      <div class="rating__item">Pihu: 4.5</div>
+      <div class="rating__item">John: 5.0</div>
+      <div class="rating__item">Nick: 4.8</div>
+      <div class="rating__item">Lisa: 4.0</div>
+    </div>
+
+    <!-- Voting Section -->
+    <h3>Your Rating</h3>
+    <div class="voting__form">
+      <label for="rating">Rate our Service: </label>
+      <select id="rating">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+      <button onclick="submitRating()">Submit Rating</button>
+    </div>
+    <div class="user-vote" id="userVote"></div>
+
+    <!-- Comment Section -->
+    <div class="comment__section">
+      <h3>Leave a Comment</h3>
+      <div class="comment__form">
+        <textarea id="commentText" placeholder="Share your experience..."></textarea>
+        <button onclick="submitComment()">Submit Comment</button>
+      </div>
+      <div id="commentsContainer"></div>
+    </div>
+
+    <!-- User Experiences -->
+    <div class="user-experience">
+      <h3>Other Travelers' Experiences</h3>
+      <div class="experience-item">
+        <p><span class="user-name">Nikolas:</span> "It was an amazing tour and I am very happy with my trip!"</p>
+      </div>
+      <div class="experience-item">
+        <p><span class="user-name">Tola:</span> "I can’t explain how happy I am with this trip, and this place is so beautiful!"</p>
+      </div>
+      <div class="experience-item">
+        <p><span class="user-name">Raha:</span> "In this trip, I got to explore many places and it was a budget-friendly adventure!"</p>
+      </div>
+    </div>
+
+    <!-- Back to Home Button -->
+    <a href="home.html" class="go-back-button">Go Back to Home</a>
+  </section>
+
+  <script>
+    function submitRating() {
+      const rating = document.getElementById("rating").value;
+      document.getElementById("userVote").innerHTML = "You rated our service: " + rating + " stars!";
+      alert("Thank you for your rating! You rated our service: " + rating + " stars.");
+      localStorage.setItem('userRating', rating);
+    }
+
+    function submitComment() {
+      const comment = document.getElementById("commentText").value;
+      if (comment.trim() !== "") {
+        const commentContainer = document.createElement("div");
+        commentContainer.classList.add("user-comment");
+        commentContainer.innerHTML = `<p><strong>Your Comment:</strong> ${comment}</p>`;
+        document.getElementById("commentsContainer").appendChild(commentContainer);
+        document.getElementById("commentText").value = "";
+      } else {
+        alert("Please write something before submitting.");
+      }
+    }
+  </script>
+
+</body>
+</html>
